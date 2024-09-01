@@ -1,6 +1,6 @@
 {
   "name": "ng-reactive-form-validate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An Angular library for form control validation and error handling",
   "author": "Boyan Stoyanov <b.stoyanov874@gmail.com>",
   "repository": {
@@ -23,5 +23,18 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "main": "bundles/ng-reactive-form-validate.umd.js",
+  "module": "fesm2015/ng-reactive-form-validate.js",
+  "es2015": "fesm2015/ng-reactive-form-validate.js",
+  "esm5": "esm5/ng-reactive-form-validate.js",
+  "esm2015": "esm2015/ng-reactive-form-validate.js",
+  "fesm5": "fesm5/ng-reactive-form-validate.js",
+  "typings": "ng-reactive-form-validate.d.ts",
+  "exports": {
+    ".": {
+      "import": "./fesm2015/ng-reactive-form-validate.js",
+      "require": "./fesm5/ng-reactive-form-validate.js"
+    }
   }
 }
