@@ -1,4 +1,4 @@
-# Ng Form Reactive Validator
+# Ng Reactive Form Validator
 
 ## Features
 
