@@ -63,7 +63,7 @@ describe('NgReactiveFormValidateService', () => {
       const errorMessages: ErrorMessage = {};
 
       expect(() => service.getErrors(control, errorMessages)).toThrowError(
-        'No defined error message'
+        'No defined error message for validation: required'
       );
     });
   });
@@ -123,22 +123,21 @@ describe('NgReactiveFormValidateService', () => {
       expect(result).toBe('This field is required');
     });
 
-    it('should return the result of the error message function when provided', () => {
-      const errorMessages: ErrorMessage = {
-        minlength: ({ requiredLength, actualLength }) =>
-          of(`Minimum length is ${requiredLength}, but got ${actualLength}`),
-      };
+    it('should return the result of the error message function when provided', (done) => {
+        const errorMessages: ErrorMessage = {
+          minlength: ({ requiredLength, actualLength }) =>
+            of(`Minimum length is ${requiredLength}, but got ${actualLength}`),
+        };
 
-      const result = (service as any).getMessage(
-        'minlength',
-        { requiredLength: 3, actualLength: 1 },
-        errorMessages
-      );
+        const _service  = service['getMessage']('minlength', { requiredLength: 3, actualLength: 1 }, errorMessages) as Observable<any>
+    
+        _service.subscribe(result => {
+          expect(result).toBe('Minimum length is 3, but got 1');
+          done();  
+        });
+      });
 
-      expect(result).toBe('Minimum length is 3, but got 1');
-    });
-
-    it('should return the observable directly if the error message is an observable', () => {
+    it('should return the observable directly if the error message is an observable', (done) => {
       const errorMessages: ErrorMessage = {
         required: of('Observable message'),
       };
@@ -153,6 +152,7 @@ describe('NgReactiveFormValidateService', () => {
 
       (result as Observable<string>).subscribe((message) => {
         expect(message).toBe('Observable message');
+        done();  
       });
     });
 

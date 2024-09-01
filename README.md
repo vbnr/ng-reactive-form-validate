@@ -17,23 +17,43 @@ npm install ng-reactive-form-validate
 
 ## Usage
 
-### Importing the Module into a Standalone Component/App module
+### Importing the Module into a Standalone Component/App module/Feature module
+
+## Example: Using plain text error messages
 
 ```typescript
 @Component({
-  selector: 'app-root',
+  selector: 'standalone-comp',
   standalone: true,
   imports: [
-    RouterOutlet,
-    ReactiveFormsModule,
-    NgModuleFormValidator,
-    TranslocoModule,
+    NgReactiveFormValidate,
+    // ...Other modules
   ],
   providers: [
     {
-      // The ERROR_MESSAGES token allows injecting custom error messages into NgFormValidatorService.
-      // The service will use these messages for validating form controls.
-      // Note: For Angular's built-in validators, you need to be aware of the specific object returned when an error occurs to handle it correctly.
+      // It's mandatory to provide a key:value pair to the ERROR_MESSAGES injection token
+      provide: ERROR_MESSAGES,
+      useValue: {
+        required: "Required",
+        // Additional error messages can be added here
+      },
+    },
+  ],
+})
+```
+
+## Example: Using a Transloco service
+
+```typescript
+@Component({
+  selector: 'standalone-comp',
+  standalone: true,
+  imports: [
+    NgReactiveFormValidate,
+    // ...Other modules
+  ],
+  providers: [
+    {
       provide: ERROR_MESSAGES,
       useFactory: (translocoService: TranslocoService) => {
         return {
@@ -48,15 +68,20 @@ npm install ng-reactive-form-validate
       deps: [TranslocoService],
     },
   ],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
 })
 ```
 
-## Contributing
+## Demo App Project
+For detailed usage and examples, please refer to the demo app project included in the repository. This demo app is an excellent resource that showcases 
+the full capabilities of the library. The provided example uses Transloco as the translation library, but you are free to use any other option. 
+You can also display error messages directly without needing any translation services, providing a quick setup.
 
+## Community and Support
+ We welcome all questions, suggestions, and feedback. Your input is highly valued and can help shape the future development of the library. 
+ Please feel free to open an issue or start a discussion in the repository to share your thoughts. Contributions are also highly encouraged!
+
+## Contributing
 We welcome contributions to the `ng-reactive-form-validate` project. Please see our [contributing guidelines](CONTRIBUTING.md) for more information.
 
 ## License
-
 This project is licensed under the MIT License

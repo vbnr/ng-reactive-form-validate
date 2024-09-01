@@ -1,4 +1,4 @@
-# Contributing to NgFormValidator
+# Contributing to Ng Form Reactive Validator
 
 Thank you for considering contributing to NgFormValidator! We welcome all contributions, whether they are bug fixes, new features, or improvements to our documentation. To ensure a smooth collaboration, please follow these guidelines.
 
@@ -7,11 +7,10 @@ Thank you for considering contributing to NgFormValidator! We welcome all contri
 1. **Fork the repository**: Start by forking the NgFormValidator repository to your GitHub account.
 2. **Clone the fork**: Clone the forked repository to your local machine.
    ```bash
-   git clone https://github.com/your-username/ng-reactive-form-validate.git
+   git clone https://github.com/vbnr/ng-reactive-form-validate.git
    ```
 3. **Install dependencies**: Navigate to the project directory and install the required dependencies using npm.
    ```bash
-   cd ng-reactive-form-validate
    npm install
    ```
 4. **Create a branch**: Before making any changes, create a new branch for your work. Use a descriptive name for the branch that reflects the changes you intend to make.
@@ -48,7 +47,7 @@ This command will run the unit tests and ensure that your changes do not break e
    ```bash
    git push origin feature/your-feature-name
    ```
-2. **Create a Pull Request (PR)**: Go to the original NgFormValidator repository and submit a PR from your branch. Provide a clear and detailed description of your changes, including any relevant issues or feature requests your PR addresses.
+2. **Create a Pull Request (PR)**: Go to the original repository and submit a PR from your branch. Provide a clear and detailed description of your changes, including any relevant issues or feature requests your PR addresses.
 3. **Address feedback**: Be prepared to discuss and refine your changes based on feedback from project maintainers. This may include making additional commits to your branch.
 
 ## Code of Conduct
@@ -57,4 +56,4 @@ Please note that we adhere to the [Contributor Covenant Code of Conduct](CODE_OF
 
 ## Thank You!
 
-Thank you for taking the time to contribute to NgFormValidator! Your efforts help improve the project for everyone.
+Thank you for taking the time to contribute to Ng Form Reactive Validator! Your efforts help improve the project for everyone.

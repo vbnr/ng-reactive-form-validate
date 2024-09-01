@@ -22,7 +22,7 @@ export class NgReactiveFormValidateService {
       }
     }
 
-    throw new Error(`No defined error message`);
+    return of('');
   }
 
   shouldShowErrors(control: FormControl): boolean {

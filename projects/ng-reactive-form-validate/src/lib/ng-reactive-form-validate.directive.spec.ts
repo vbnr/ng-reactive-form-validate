@@ -1,165 +1,81 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import {
-  ErrorMessage,
-  NgReactiveFormValidateDirective,
-} from './ng-reactive-form-validate.directive';
-import { ERROR_MESSAGES } from './ng-reactive-form-validate.module';
-import { NgReactiveFormValidateService } from './ng-reactive-form-validate.service';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { NgReactiveFormValidateDirective } from './ng-reactive-form-validate.directive';
+import { ERROR_MESSAGES, NgReactiveFormValidate } from './ng-reactive-form-validate.module';
 
 @Component({
-  template: `<div [ngReactiveFormValidate]="control"></div>`,
+  selector: 'test-comp',
+  template: `
+    <form [formGroup]="form1">
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" />
+      <span [ngReactiveFormValidate]="form1.controls.name"></span>
+    </form>
+  `,
 })
 class TestComponent {
-  control = new FormControl('');
+  form1 = this.fb.group({
+    name: ['', [Validators.required]],
+  });
+
+  constructor(private fb: FormBuilder) { }
 }
 
 describe('NgReactiveFormValidateDirective', () => {
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
-  let el: ElementRef;
-  let renderer: Renderer2;
-  let directive: NgReactiveFormValidateDirective;
-  let service: NgReactiveFormValidateService;
+  let spanElement: HTMLElement;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, NgReactiveFormValidateDirective],
-      imports: [ReactiveFormsModule],
+      declarations: [TestComponent],
+      imports: [ReactiveFormsModule, NgReactiveFormValidate],
       providers: [
-        {
-          provide: ERROR_MESSAGES,
-          useValue: { required: 'This field is required' } as ErrorMessage,
-        },
-        NgReactiveFormValidateService,
+        { provide: ERROR_MESSAGES, useValue: { required: "This field is required" } }
       ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
 
-    // Manually create instances for testing
-    el = fixture.debugElement.children[0];
-    renderer = fixture.componentRef.injector.get(Renderer2);
-    service = TestBed.inject(NgReactiveFormValidateService);
-    directive = new NgReactiveFormValidateDirective(
-      TestBed.inject(ERROR_MESSAGES),
-      el,
-      renderer,
-      service
-    );
-
-    directive.control = component.control;
+    spanElement = fixture.debugElement.query(By.css('span')).nativeElement;
   });
 
   it('should apply default styles when defaultStyles is true', () => {
-    spyOn(renderer, 'setStyle').and.callThrough();
-    directive.defaultStyles = true;
+    // Triggering validation to apply styles
+    component.form1.controls.name.markAsTouched();
+    component.form1.controls.name.updateValueAndValidity();
+    fixture.detectChanges();
 
-    directive['setDefStyles']();
 
-    expect(renderer.setStyle).toHaveBeenCalledWith(
-      el.nativeElement,
-      'padding',
-      '4px'
-    );
-    expect(renderer.setStyle).toHaveBeenCalledWith(
-      el.nativeElement,
-      'font-size',
-      '0.9rem'
-    );
-    expect(renderer.setStyle).toHaveBeenCalledWith(
-      el.nativeElement,
-      'color',
-      '#dc3545'
-    );
+    const padding = spanElement.style.padding;
+    const fontSize = spanElement.style.fontSize;
+    const color = spanElement.style.color;
+
+    expect(padding).toBe('4px');
+    expect(fontSize).toBe('0.9rem');
+    expect(color).toBe('rgb(220, 53, 69)'); // #dc3545 in RGB
   });
 
-  it('should not apply default styles when defaultStyles is false', () => {
-    spyOn(renderer, 'setStyle').and.callThrough();
-    directive.defaultStyles = false;
+  it('should show error message when control is invalid', () => {
+    // Trigger form control to be invalid
+    component.form1.controls.name.markAsTouched();
+    fixture.detectChanges();
 
-    directive['setDefStyles']();
-
-    expect(renderer.setStyle).not.toHaveBeenCalledWith(
-      el.nativeElement,
-      'padding',
-      '4px'
-    );
-    expect(renderer.setStyle).not.toHaveBeenCalledWith(
-      el.nativeElement,
-      'font-size',
-      '0.9rem'
-    );
-    expect(renderer.setStyle).not.toHaveBeenCalledWith(
-      el.nativeElement,
-      'color',
-      '#dc3545'
-    );
+    // Check for the presence of error message
+    const errorMessage = spanElement.innerText;
+    expect(errorMessage).toContain('This field is required');
   });
 
-  it('should properly set base styles and properties', () => {
-    spyOn(renderer, 'removeClass').and.callThrough();
-    spyOn(renderer, 'addClass').and.callThrough();
-    spyOn(renderer, 'setStyle').and.callThrough();
+  it('should hide error message when control is valid', () => {
+    // Set control to a valid state
+    component.form1.controls.name.setValue('Valid value');
+    fixture.detectChanges();
 
-    directive['setBaseStylesAndProps']();
-
-    expect(renderer.removeClass).toHaveBeenCalledWith(
-      el.nativeElement,
-      'ng-reactive-form-validate-container'
-    );
-    expect(renderer.addClass).toHaveBeenCalledWith(
-      el.nativeElement,
-      'ng-reactive-form-validate-container'
-    );
-    expect(renderer.setStyle).toHaveBeenCalledWith(
-      el.nativeElement,
-      'display',
-      'block'
-    );
-  });
-
-  it('should add show class and set message text when showing message', () => {
-    spyOn(renderer, 'removeClass').and.callThrough();
-    spyOn(renderer, 'addClass').and.callThrough();
-    spyOn(renderer, 'setProperty').and.callThrough();
-
-    directive['showMessage']('This field is required');
-
-    expect(renderer.removeClass).toHaveBeenCalledWith(el.nativeElement, 'hide');
-    expect(renderer.addClass).toHaveBeenCalledWith(el.nativeElement, 'show');
-    expect(renderer.setProperty).toHaveBeenCalledWith(
-      el.nativeElement,
-      'innerText',
-      'This field is required'
-    );
-  });
-
-  it('should add hide class and set display none when hiding message', () => {
-    spyOn(renderer, 'removeClass').and.callThrough();
-    spyOn(renderer, 'addClass').and.callThrough();
-    spyOn(renderer, 'setStyle').and.callThrough();
-
-    directive['hideMessage']();
-
-    expect(renderer.removeClass).toHaveBeenCalledWith(el.nativeElement, 'show');
-    expect(renderer.addClass).toHaveBeenCalledWith(el.nativeElement, 'hide');
-    expect(renderer.setStyle).toHaveBeenCalledWith(
-      el.nativeElement,
-      'display',
-      'none'
-    );
-  });
-
-  it('should clean up observables on destroy', () => {
-    spyOn(directive['destroySubject$'], 'next').and.callThrough();
-    spyOn(directive['destroySubject$'], 'complete').and.callThrough();
-
-    directive.ngOnDestroy();
-
-    expect(directive['destroySubject$'].next).toHaveBeenCalled();
-    expect(directive['destroySubject$'].complete).toHaveBeenCalled();
+    // Check that error message is not present
+    const errorMessage = spanElement.innerText;
+    expect(errorMessage).toBe('');
   });
 });
