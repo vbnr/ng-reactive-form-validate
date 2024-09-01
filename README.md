@@ -72,7 +72,7 @@ npm install ng-reactive-form-validate
 ```
 
 ## Demo App Project
-For detailed usage and examples, please refer to the demo app project included in the repository. This demo app is an excellent resource that showcases 
+For detailed usage and examples, please refer to the demo app project (https://github.com/vbnr/ng-reactive-form-validate/blob/master/projects/demo-app/src/app/app.component.ts) included in the repository. This demo app is an excellent resource that showcases 
 the full capabilities of the library. The provided example uses Transloco as the translation library, but you are free to use any other option. 
 You can also display error messages directly without needing any translation services, providing a quick setup.
 

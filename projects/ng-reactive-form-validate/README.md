@@ -75,7 +75,7 @@ npm install ng-reactive-form-validate
 This project is licensed under the MIT License
 
 ## Repository
-For more details, visit our GitHub repository (https://github.com/vbnr/ng-reactive-form-validate).
+For more details and examples of using it, visit my GitHub repository (https://github.com/vbnr/ng-reactive-form-validate).
 
 
 
