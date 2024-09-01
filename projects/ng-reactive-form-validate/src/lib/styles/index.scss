@@ -1,0 +1,35 @@
+@keyframes showLabel {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hideLabel {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.ng-reactive-form-validate-container {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+
+  &.show {
+    animation: showLabel 0.3s forwards;
+  }
+
+  &.hide {
+    animation: hideLabel 0.3s forwards;
+  }
+}
