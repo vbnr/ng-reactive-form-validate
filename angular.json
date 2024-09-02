@@ -63,7 +63,8 @@
               "projects/demo-app/src/assets"
             ],
             "styles": [
-              "projects/demo-app/src/styles.scss"
+              "projects/demo-app/src/styles.scss",
+              "node_modules/ng-reactive-form-validate/src/lib/styles/index.scss"
             ],
             "scripts": []
           },
