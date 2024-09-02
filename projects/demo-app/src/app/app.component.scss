@@ -1,0 +1,42 @@
+body {
+  text-align: center;
+}
+
+form {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  max-width: 500px;
+}
+
+form div {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: #e74c3c;
+  background-color: #fce4e4;
+}
+
+span[appFormValidator] {
+  display: block;
+  margin-top: 0.5rem;
+  color: #e74c3c;
+  font-size: 0.875rem;
+  font-style: italic;
+}

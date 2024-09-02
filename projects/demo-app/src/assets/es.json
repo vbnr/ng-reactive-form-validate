@@ -1,0 +1,4 @@
+{
+  "required": "Este campo es obligatorio",
+  "minlength": "La longitud mínima es de {{num}} caracteres."
+}

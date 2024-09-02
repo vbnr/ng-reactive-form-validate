@@ -1,0 +1,20 @@
+<div>
+  <button (click)="changeLang('en')">English</button>
+  <button (click)="changeLang('es')">Español</button>
+</div>
+
+<div>
+  <h2>Form 1</h2>
+  <form [formGroup]="form1">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" />
+      <span [ngReactiveFormValidate]="form1.controls.name"> </span>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" />
+      <span [ngReactiveFormValidate]="form1.controls.email"> </span>
+    </div>
+  </form>
+</div>
