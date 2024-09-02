@@ -15,6 +15,16 @@ Install the library using npm:
 npm install ng-reactive-form-validate
 ```
 
+Add base styles to the angular.json file (optional)
+Make sure to include the following styles under the "build" section of your angular.json file:
+```bash
+"build": {
+    "styles": [
+      "node_modules/ng-reactive-form-validate/src/lib/styles/index.scss"
+     ],
+}
+```
+
 ## Usage
 
 ### Importing the Module into a Standalone Component/App module/Feature module
