@@ -1,4 +1,6 @@
-# # Ng Reactive Form Validator
+# Ng Reactive Form Validator
+
+[![npm version](https://badge.fury.io/js/ng-reactive-form-validate.svg)](https://www.npmjs.com/package/ng-reactive-form-validate)
 
 ## Features
 
