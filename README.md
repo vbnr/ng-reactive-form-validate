@@ -19,6 +19,7 @@ npm install ng-reactive-form-validate
 
 Add base styles to the angular.json file (optional)
 Make sure to include the following styles under the "build" section of your angular.json file:
+
 ```bash
 "build": {
     "styles": [
@@ -83,17 +84,45 @@ Make sure to include the following styles under the "build" section of your angu
 })
 ```
 
+## Example code snippet
+
+```typescript
+HTML file:
+ <form [formGroup]="form1">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" />
+      <span [ngReactiveFormValidate]="form1.controls.name"> </span>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" />
+      <span [ngReactiveFormValidate]="form1.controls.email"> </span>
+    </div>
+  </form>
+
+TS file:
+   form1 = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.email]],
+  });
+```
+
 ## Demo App Project
-For detailed usage and examples, please refer to the demo app project (https://github.com/vbnr/ng-reactive-form-validate/blob/master/projects/demo-app/src/app/app.component.ts) included in the repository. This demo app is an excellent resource that showcases 
-the full capabilities of the library. The provided example uses Transloco as the translation library, but you are free to use any other option. 
+
+For detailed usage and examples, please refer to the demo app project (https://github.com/vbnr/ng-reactive-form-validate/blob/master/projects/demo-app/src/app/app.component.ts) included in the repository. This demo app is an excellent resource that showcases
+the full capabilities of the library. The provided example uses Transloco as the translation library, but you are free to use any other option.
 You can also display error messages directly without needing any translation services, providing a quick setup.
 
 ## Community and Support
- We welcome all questions, suggestions, and feedback. Your input is highly valued and can help shape the future development of the library. 
- Please feel free to open an issue or start a discussion in the repository to share your thoughts. Contributions are also highly encouraged!
+
+We welcome all questions, suggestions, and feedback. Your input is highly valued and can help shape the future development of the library.
+Please feel free to open an issue or start a discussion in the repository to share your thoughts. Contributions are also highly encouraged!
 
 ## Contributing
+
 We welcome contributions to the `ng-reactive-form-validate` project. Please see our [contributing guidelines](CONTRIBUTING.md) for more information.
 
 ## License
+
 This project is licensed under the MIT License
