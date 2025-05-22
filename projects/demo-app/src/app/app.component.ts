@@ -4,9 +4,9 @@ import { RouterOutlet } from '@angular/router';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { Observable } from 'rxjs';
 import {
-  ERROR_MESSAGES,
   NgReactiveFormValidate,
-} from '../../../ng-reactive-form-validate/src/public-api';
+  ERROR_MESSAGES,
+} from 'ng-reactive-form-validate';
 
 @Component({
   selector: 'app-root',
