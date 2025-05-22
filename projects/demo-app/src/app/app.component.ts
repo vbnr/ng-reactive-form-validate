@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { Observable } from 'rxjs';
 import {
@@ -11,12 +10,7 @@ import {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    ReactiveFormsModule,
-    NgReactiveFormValidate,
-    TranslocoModule,
-  ],
+  imports: [ReactiveFormsModule, NgReactiveFormValidate, TranslocoModule],
   providers: [
     {
       provide: ERROR_MESSAGES,

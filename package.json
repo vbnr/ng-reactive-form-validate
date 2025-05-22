@@ -19,7 +19,7 @@
     "@angular/router": "^19.2.0",
     "@jsverse/transloco": "^7.4.3",
     "@ngneat/transloco": "^6.0.4",
-    "ng-reactive-form-validate": "^1.0.6",
+    "ng-reactive-form-validate": "^1.0.8",
     "rxjs": "^7.8.1",
     "tslib": "^2.5.0",
     "zone.js": "~0.15.0"
