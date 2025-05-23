@@ -23,7 +23,7 @@ Make sure to include the following styles under the "build" section of your angu
 ```bash
 "build": {
     "styles": [
-      "node_modules/ng-reactive-form-validate/src/lib/styles/index.scss"
+      "node_modules/ng-reactive-form-validate/lib/index.scss"
      ],
 }
 ```

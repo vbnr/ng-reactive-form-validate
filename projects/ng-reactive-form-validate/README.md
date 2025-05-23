@@ -17,10 +17,11 @@ npm install ng-reactive-form-validate
 
 Add base styles to the angular.json file (optional)
 Make sure to include the following styles under the "build" section of your angular.json file:
+
 ```bash
 "build": {
     "styles": [
-      "node_modules/ng-reactive-form-validate/src/lib/styles/index.scss"
+      "node_modules/ng-reactive-form-validate/lib/index.scss"
      ],
 }
 ```
@@ -82,10 +83,9 @@ Make sure to include the following styles under the "build" section of your angu
 ```
 
 ## License
+
 This project is licensed under the MIT License
 
 ## Repository
+
 For more details and examples of using it, visit my GitHub repository (https://github.com/vbnr/ng-reactive-form-validate).
-
-
-
