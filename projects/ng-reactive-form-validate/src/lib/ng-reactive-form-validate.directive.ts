@@ -20,9 +20,11 @@ export type ErrorMessage = Record<
 
 @Directive({
   selector: '[ngReactiveFormValidate]',
+  standalone: false,
 })
 export class NgReactiveFormValidateDirective implements DoCheck, OnDestroy {
-  @Input({ alias: 'ngReactiveFormValidate', required: true }) control!: FormControl;
+  @Input({ alias: 'ngReactiveFormValidate', required: true })
+  control!: FormControl;
   @Input() containerClass = 'ng-reactive-form-validate-container';
   @Input() defaultStyles = true;
 
