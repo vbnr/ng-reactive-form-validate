@@ -1,6 +1,6 @@
 {
   "name": "ng-reactive-form-validate-workspace",
-  "version": "1.0.3",
+  "version": "1.10.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -19,10 +19,10 @@
     "@angular/router": "^19.2.0",
     "@jsverse/transloco": "^7.4.3",
     "@ngneat/transloco": "^6.0.4",
-    "ng-reactive-form-validate": "^1.0.8",
-    "rxjs": "^7.8.1",
-    "tslib": "^2.5.0",
-    "zone.js": "~0.15.0"
+    "ng-reactive-form-validate": "^1.10.3",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.13",

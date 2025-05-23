@@ -59,7 +59,7 @@
             ],
             "styles": [
               "projects/demo-app/src/styles.scss",
-              "node_modules/ng-reactive-form-validate/styles/styles.scss"
+              "node_modules/ng-reactive-form-validate/lib/index.scss"
             ],
             "scripts": []
           },
