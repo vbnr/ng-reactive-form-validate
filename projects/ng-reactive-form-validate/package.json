@@ -1,11 +1,11 @@
 {
   "name": "ng-reactive-form-validate",
-  "version": "1.10.4",
+  "version": "1.10.5",
   "description": "An Angular library for form control validation and error handling",
   "author": "Boyan Stoyanov <b.stoyanov874@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vbnr/ng-reactive-form-validate"
+    "url": "git+https://github.com/vbnr/ng-reactive-form-validate.git"
   },
   "keywords": [
     "angular",
